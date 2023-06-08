@@ -34,14 +34,16 @@ function searchPeopleDataSet(people) {
     let results = [];
     switch (searchTypeChoice) {
         case 'id':
+            let personId=displayperson(person[0]);
             results = searchById(people);
             break;
         case 'name':
+            let personName=displaypeople(people);
             results = searchByName(people);
             break;
         case 'traits':
-            //! TODO
-            // results = searchByTraits(people);
+            let personTraits=displayPeople(people);
+            results = searchByTraits(people);
             break;
         default:
             return searchPeopleDataSet(people);
@@ -73,18 +75,21 @@ function mainMenu(person, people) {
 
     switch (mainMenuUserActionChoice) {
         case "info":
-            //! TODO
-            // displayPersonInfo(person);
+            let displayPersonInfo=displayPerson(person[0]);
+            app(people);
+            results=displayPersonInfo(person);
             break;
         case "family":
-            //! TODO
-            // let personFamily = findPersonFamily(person, people);
-            // displayPeople('Family', personFamily);
+            let personFamily = findPersonFamily(person[0], people);
+            alert(personFamily);
+            app(people)
+            results=displayPeople('Family', personFamily);
             break;
         case "descendants":
             //! TODO
-            // let personDescendants = findPersonDescendants(person, people);
-            // displayPeople('Descendants', personDescendants);
+            let personDescendants = findPersonDescendants(person, people);
+            alert(personDescendants);
+            results=displayPeople('Descendants', personDescendants);
             break;
         case "quit":
             return;
